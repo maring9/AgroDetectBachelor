@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-agrodetectapp-dev-131939-authRole",
+      "UnauthRoleArn": "arn:aws:iam::291860784967:role/amplify-agrodetectapp-dev-131939-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::291860784967:role/amplify-agrodetectapp-dev-131939-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-agrodetectapp-dev-131939-deployment",
+      "UnauthRoleName": "amplify-agrodetectapp-dev-131939-unauthRole",
+      "StackName": "amplify-agrodetectapp-dev-131939",
+      "StackId": "arn:aws:cloudformation:eu-central-1:291860784967:stack/amplify-agrodetectapp-dev-131939/b48b1ca0-d9e4-11ed-946c-06d7de8e78ac",
+      "AmplifyAppId": "d37zldq1fr9xw5"
+    },
+    "categories": {
+      "auth": {
+        "agrodetectapp47ba0d9a": {}
+      }
+    }
+  }
+}

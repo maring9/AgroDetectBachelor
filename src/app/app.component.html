@@ -350,6 +350,17 @@
 
   </div>
 
+  <amplify-authenticator>
+    <ng-template
+      amplifySlot="authenticated"
+      let-user="user"
+      let-signOut="signOut"
+    >
+      <h1>Welcome {{ user.username }}!</h1>
+      <button (click)="signOut()">Sign Out</button>
+    </ng-template>
+  </amplify-authenticator>
+
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
