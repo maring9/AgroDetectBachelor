@@ -106,6 +106,8 @@ else
     \"facebookAppSecretUserPool\":\"${AMPLIFY_FACEBOOK_CLIENT_SECRET}\",\
     \"googleAppIdUserPool\":\"${AMPLIFY_GOOGLE_CLIENT_ID}\",\
     \"googleAppSecretUserPool\":\"${AMPLIFY_GOOGLE_CLIENT_SECRET}\",\
+    \"amazonAppIdUserPool\":\"${AMPLIFY_AMAZON_CLIENT_ID}\",\
+    \"amazonAppSecretUserPool\":\"${AMPLIFY_AMAZON_CLIENT_SECRET}\"\
     }"
     CATEGORIES="{\
     \"auth\":$AUTHCONFIG\
