@@ -7,9 +7,26 @@ const awsmobile = {
     "aws_cognito_region": "eu-central-1",
     "aws_user_pools_id": "eu-central-1_5Bk9rHM6h",
     "aws_user_pools_web_client_id": "1hv6csetrj0homv94ljttm7mf5",
-    "oauth": {},
+    "oauth": {
+        "domain": "pe2kkri9cfuu-dev.auth.eu-central-1.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "https://dev.d37zldq1fr9xw5.amplifyapp.com/",
+        "redirectSignOut": "https://dev.d37zldq1fr9xw5.amplifyapp.com/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [],
-    "aws_cognito_social_providers": [],
+    "aws_cognito_social_providers": [
+        "FACEBOOK",
+        "GOOGLE",
+        "AMAZON"
+    ],
     "aws_cognito_signup_attributes": [
         "EMAIL"
     ],
@@ -19,7 +36,12 @@ const awsmobile = {
     ],
     "aws_cognito_password_protection_settings": {
         "passwordPolicyMinLength": 8,
-        "passwordPolicyCharacters": []
+        "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+        ]
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
