@@ -14,6 +14,15 @@
     "categories": {
       "auth": {
         "agrodetectapp47ba0d9a": {}
+      },
+      "function": {
+        "AgroDetectAppFunction": {
+          "deploymentBucketName": "amplify-agrodetectapp-dev-131939-deployment",
+          "s3Key": "amplify-builds/AgroDetectAppFunction-7135575a6e4f507a4267-build.zip"
+        }
+      },
+      "api": {
+        "AgroDetectAppApi": {}
       }
     }
   }

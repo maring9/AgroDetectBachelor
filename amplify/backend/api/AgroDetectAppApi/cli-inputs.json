@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/inference": {
+      "name": "/inference",
+      "lambdaFunction": "AgroDetectAppFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
