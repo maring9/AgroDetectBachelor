@@ -8,3 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'AgroDetectBachelorFrontend';
 }
+
+// <h2>{{console.log(user.signInUserSession.idToken)}}</h2>
+// console = console;

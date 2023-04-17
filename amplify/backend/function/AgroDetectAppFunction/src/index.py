@@ -35,7 +35,7 @@ def handler(event, context):
   detected_labels = [label["Name"] for label in detected_labels]
   print("Detected labels: ", detected_labels)
 
-  if "Leaf" not in detected_labels or "Plant" not in detected_labels:
+  if "Leaf" not in detected_labels and "Plant" not in detected_labels:
     return {
       "statusCode": 200,
       "body": json.dumps("Uploaded image is not a plant/leaf. Please use a different image.")
