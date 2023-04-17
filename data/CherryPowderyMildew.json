@@ -1,0 +1,30 @@
+{
+    "Name": "Cherry Powdery Mildew",
+    "isDisease": "true",
+    "Description": "Cherry powdery mildew is a fungal disease that affects cherry trees, caused by the fungus Podosphaera clandestina. The disease is characterized by a powdery white or gray coating on the leaves, stems, and fruit of the tree. As the disease progresses, the affected leaves may curl or become distorted, and the fruit may develop cracks or deformities. Cherry powdery mildew can also weaken the tree, making it more susceptible to other diseases.",
+    "Treatments": [
+        {
+            "Prune affected branches": "Cut out the infected branches as soon as possible and dispose of them far away from the orchard. This helps to stop the spread of the disease."
+        },
+        {
+            "Promote good tree health": "Healthy trees are less susceptible to cherry powdery mildew. Ensure that the trees are properly pruned, receive adequate water and nutrients, and are not overcrowded."
+        },
+        {
+            "Practice crop rotation": "Avoid planting cherry trees in the same location as previous crops. This helps to reduce the chance of fungal spores surviving in the soil."
+        },
+        {
+            "Use fungicides": "Fungicides such as sulfur, potassium bicarbonate, or myclobutanil can help control cherry powdery mildew. Spray the fungicide on the tree in the early spring before the tree blooms and then repeat the application every 7 to 14 days, depending on the product used and the severity of the infection."
+        }
+    ],
+    "Products": [
+        {
+            "Sulfur": "A contact fungicide that can be effective against powdery mildew on cherry trees."
+        },
+        {
+            "Myclobutanil": "A systemic fungicide that provides longer-lasting protection against fungal diseases."
+        },
+        {
+            "Potassium bicarbonate": "A contact fungicide that can be effective against powdery mildew on cherry trees. It works by disrupting the cell membranes of the fungus."
+        }
+    ]
+}

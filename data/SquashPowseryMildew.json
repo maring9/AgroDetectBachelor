@@ -1,0 +1,30 @@
+{
+    "Name": "Squash Powdery Mildew",
+    "isDisease": "true",
+    "Description": "Squash powdery mildew is a fungal disease that affects squash plants, including zucchini, pumpkin, and other types of squash. It is characterized by a white, powdery growth on the leaves, stems, and fruits of the plant. The disease can cause stunted growth, reduced yield, and even death of the plant if left untreated.",
+    "Treatments": [
+        {
+            "Plant resistant varieties:": "Some varieties of squash are more resistant to powdery mildew than others."
+        },
+        {
+            "Water management": "Water the plants at the base, and avoid getting water on the leaves. This helps to reduce the humidity around the plant, which can contribute to the development of powdery mildew."
+        },
+        {
+            "Proper spacing": "Proper spacing between plants allows for good air circulation, which can help to reduce the humidity and prevent powdery mildew."
+        },
+        {
+            "Remove infected plant material": "Remove any infected leaves, fruits, or stems as soon as they are detected. This can help to prevent the spread of the disease."
+        }
+    ],
+    "Products": [
+        {
+            "Sulfur": "Sulfur is a natural fungicide that is effective against powdery mildew. It should be applied preventively or at the first sign of disease. Sulfur is available as a dust or spray."
+        },
+        {
+            "Potassium bicarbonate": "Potassium bicarbonate is a contact fungicide that is effective against powdery mildew. It works by altering the pH on the leaf surface, which makes it difficult for the fungus to grow. Potassium bicarbonate is available as a spray."
+        },
+        {
+            "Neem oil": "Neem oil is a natural fungicide that is effective against powdery mildew. It works by disrupting the life cycle of the fungus. Neem oil is available as a spray."
+        }
+    ]
+}

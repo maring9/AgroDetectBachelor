@@ -1,0 +1,27 @@
+{
+    "Name": "Bell Pepper Bacterial Spot",
+    "isDisease": "true",
+    "Description": "Bell pepper bacterial spot is a disease caused by the bacterium Xanthomonas campestris pv. vesicatoria. It can cause significant yield losses in pepper crops by causing dark, water-soaked spots on leaves, stems, and fruit, which can eventually turn brown and necrotic.",
+    "Treatments": [
+        {
+            "Crop Rotation": ""
+        },
+        {
+            "Planting Disease-Resistant Cultivars": ""
+        },
+        {
+            "Cultural practices": "Practices such as proper irrigation management and fertilization can help improve the overall health of the tree and reduce its susceptibility to peach bacterial spot."
+        }
+    ],
+    "Products": [
+        {
+            "Copper Hydroxide": "It is effective against a wide range of fungal diseases that affect crops, such as powdery mildew, downy mildew, and leaf spots."
+        },
+        {
+            "Copper Sulfate": "It is effective against many of the same fungal diseases as copper hydroxide, including powdery mildew, downy mildew, and leaf spots."
+        },
+        {
+            "Antibiotics": "Antibiotics such as streptomycin or oxytetracycline may also be used to manage bacterial spot in bell pepper. However, the use of antibiotics is subject to strict regulations."
+        }
+    ]
+}

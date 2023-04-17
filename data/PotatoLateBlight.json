@@ -1,0 +1,21 @@
+{
+    "Name": "Potato Late Blight",
+    "isDisease": "true",
+    "Description": "Potato Late Blight is a destructive disease caused by the oomycete pathogen Phytophthora infestans. It can affect both potatoes and tomatoes, and can cause significant yield losses if left untreated. The symptoms of Potato Late Blight include dark, water-soaked lesions on leaves, stems, and tubers. These lesions can quickly expand and turn brown, with a fuzzy appearance on the undersides of the leaves in wet conditions. Infected tubers may also have a brownish-black, corky rot.",
+    "Treatments": [
+        {
+            "Cultural Control Measures": "Include crop rotation, removal of infected plant debris, and planting resistant varieties."
+        }
+    ],
+    "Products": [
+        {
+            "Chlorothalonil": "A broad-spectrum fungicide that can be applied preventively or curatively. It is effective against a wide range of fungal diseases, including Potato Late Blight."
+        },
+        {
+            "Mancozeb": "This fungicide has a systemic mode of action and is effective against Potato Late Blight. It can be applied preventively or as a curative treatment. Azoxystrobin is available under various trade names, such as Quadris, Amistar, and Abound."
+        },
+        {
+            "Metalaxyl": "This fungicide has a systemic mode of action and is effective against several diseases, including Potato Late Blight. It should be applied preventively, before the disease becomes established. Metalaxyl is available under various trade names, such as Ridomil and Subdue."
+        }
+    ]
+}

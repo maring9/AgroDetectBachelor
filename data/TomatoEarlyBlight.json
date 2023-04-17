@@ -1,0 +1,30 @@
+{
+    "Name": "Tomato Early Blight",
+    "isDisease": "true",
+    "Description": "Tomato Early Blight is a common fungal disease that affects tomato plants. It is caused by the fungus Alternaria solani, which can overwinter in plant debris or soil and infect plants during periods of high humidity and warm temperatures. Symptoms of early blight on tomato plants include small, circular, brown spots that develop on lower leaves, which then enlarge and develop concentric rings. Infected leaves may eventually yellow and fall off, which can lead to reduced yield.",
+    "Treatments": [
+        {
+            "Crop rotation": "Plant tomatoes in a different location each year to reduce the build-up of fungal spores in the soil."
+        },
+        {
+            "Pruning": "Remove infected leaves as soon as you see symptoms to prevent the disease from spreading to other parts of the plant."
+        },
+        {
+            "Cultural practices": "Ensure adequate air circulation around plants by spacing them appropriately, watering at the base of plants instead of from overhead, and avoiding excessive nitrogen fertilizer application."
+        },
+        {
+            "Disease-resistant varieties": "Choose tomato varieties that are resistant to early blight to reduce the likelihood of infection."
+        }
+    ],
+    "Products": [
+        {
+            "Chlorothalonil": "Such as Bravo, can be effective in controlling early blight. These products can be applied preventively or at the first sign of disease."
+        },
+        {
+            "Bordeaux": "These products are often used in organic farming."
+        },
+        {
+            "Microthiol Disperss": "Can also be effective in controlling early blight. These products are often used in organic farming."
+        }
+    ]
+}

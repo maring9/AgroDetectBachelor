@@ -1,0 +1,18 @@
+{
+    "Name": "Tomato Bacterial Spot",
+    "isDisease": "true",
+    "Description": "Tomato bacterial spot is a plant disease caused by the bacteria Xanthomonas campestris pv. vesicatoria. It affects the leaves, stems, and fruits of tomato plants, causing circular lesions with a water-soaked appearance that may later turn brown or black. The disease can cause significant yield losses in infected crops and can also spread rapidly through the field.",
+    "Treatments": [
+        {
+            "Cultural practices": "Include removing infected plant debris and avoiding overhead irrigation"
+        }
+    ],
+    "Products": [
+        {
+            "Copper Hydroxide": "It is effective against a wide range of fungal diseases that affect crops, such as powdery mildew, downy mildew, and leaf spots."
+        },
+        {
+            "Copper Oxychloride": "It is a copper-based compound that is effective against many fungal diseases, including anthracnose, blight, and rust."
+        }
+    ]
+}
