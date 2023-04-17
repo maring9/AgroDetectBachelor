@@ -92,9 +92,9 @@ def detect_labels(image_bytes):
   detected_labels = rekognition_response["Labels"]
 
   detected_labels = [label["Name"] for label in detected_labels]
-  logger.info("Detected labels by Rekognition: %s", detect_labels)
+  logger.info("Detected labels by Rekognition: %s", detected_labels)
 
-  return detect_labels
+  return detected_labels
 
 
 def is_not_plant(detected_labels):
