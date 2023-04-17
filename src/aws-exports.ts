@@ -45,6 +45,13 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
+    ],
+    "aws_cloud_logic_custom": [
+        {
+            "name": "AgroDetectAppApi",
+            "endpoint": "https://v7m75ji4el.execute-api.eu-central-1.amazonaws.com/dev",
+            "region": "eu-central-1"
+        }
     ]
 };
 

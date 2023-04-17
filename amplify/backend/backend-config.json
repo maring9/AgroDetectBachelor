@@ -38,8 +38,7 @@
         ],
         "socialProviders": [
           "FACEBOOK",
-          "GOOGLE",
-          "AMAZON"
+          "GOOGLE"
         ],
         "usernameAttributes": [],
         "verificationMechanisms": [
