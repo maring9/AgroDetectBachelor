@@ -1,6 +1,22 @@
 import { Component } from '@angular/core';
 import { Auth, API } from 'aws-amplify';
 
+class InferenceResponse{
+  name: string;
+  description: string;
+  isDisease: boolean;
+  products: Record<string, string>[];
+  treatments: Record<string, string>[];
+
+  constructor(Name: string, Description: string, isDisease: boolean, Treatments:Record<string, string>[], Products: Record<string, string>[]) {
+    this.name = Name;
+    this.description = Description;
+    this.isDisease = isDisease;
+    this.products = Products;
+    this.treatments = Treatments;
+  }
+}
+
 @Component({
   selector: 'app-image-upload',
   templateUrl: './image-upload.component.html',
@@ -9,7 +25,7 @@ import { Auth, API } from 'aws-amplify';
 export class ImageUploadComponent {
 
   b64EncodedImage?: string = "";
-  response?: object;
+  inferenceResponse?: InferenceResponse;
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -44,8 +60,11 @@ export class ImageUploadComponent {
     console.log('Sending request, waiting for response...');
 
     try {
-      this.response = await API.post('AgroDetectAppApi', '/inference', requestData);
-      console.log('Response: ', this.response);
+      const response = await API.post('AgroDetectAppApi', '/inference', requestData);
+      console.log('Response: ', response);
+
+      this.inferenceResponse = new InferenceResponse(response.Name, response.Description, response.isDisease, response.Products, response.Treatments);
+      console.log("Inference response: ", this.inferenceResponse)
     } catch (error) {
       console.log("Error running inference: ", error)
     }

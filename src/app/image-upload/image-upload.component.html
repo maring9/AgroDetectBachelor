@@ -2,3 +2,8 @@
 <input type="file" (change)="onFileSelected($event)">
 <br>
 <button (click)="runInference()">Run inference</button>
+<h1> Title: {{inferenceResponse?.name || 'No response yet'}}</h1>
+<h1> Description: {{inferenceResponse?.description || 'No response yet'}}</h1>
+<h1> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h1>
+<h1> Products: {{inferenceResponse?.products || 'No response yet'}} </h1>
+<h1> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h1>
