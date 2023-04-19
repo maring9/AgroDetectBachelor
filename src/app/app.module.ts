@@ -6,12 +6,14 @@ import { Amplify } from 'aws-amplify';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import awsconfig from '../aws-exports';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 Amplify.configure(awsconfig)
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
