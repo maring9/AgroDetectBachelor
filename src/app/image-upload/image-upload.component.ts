@@ -18,19 +18,18 @@ export class ImageUploadComponent {
     //   return false;
     // }
     const reader = new FileReader();
-
+    console.log('Encoding image...');
     reader.readAsDataURL(file);
-
-    var b64string = "";
 
     reader.onload = () => {
       this.b64EncodedImage= reader.result?.toString().split(',')[1];
-      console.log(b64string);
+      console.log(this.b64EncodedImage);
 
     };
   }
 
   async runInference() {
+    console.log('Running inference');
     const user = await Auth.currentAuthenticatedUser();
 
     const jwtToken = user.signInUserSession.idToken.jwtToken;
