@@ -1,9 +1,12 @@
 <div class="toolbar" role="banner">
-  <img
+  <a href="#">
+    <img
     width="40"
     alt="AgroDetect Logo"
     src="../../assets/logo_only.png"
   />
+  </a>
+
   <span>AgroDetect</span>
     <div class="spacer"></div>
     <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1dcrf8m" tabindex="0" type="button">
@@ -12,7 +15,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.08905 7.5C1.32013 4.25942 3.77983 1.63516 6.94401 1.15135C5.65837 3.03509 4.87566 5.22096 4.67623 7.5H1.08905ZM1.08905 8.5H4.67623C4.87566 10.779 5.65838 12.9649 6.94401 14.8486C3.77984 14.3648 1.32015 11.7406 1.08905 8.5ZM5.68037 8.5C5.88948 10.7089 6.6912 12.8199 7.99972 14.6101C9.30824 12.8199 10.11 10.7089 10.3191 8.5H5.68037ZM11.3232 8.5C11.1238 10.779 10.341 12.9649 9.0554 14.8487C12.2197 14.365 14.6796 11.7407 14.9107 8.5H11.3232ZM14.9107 7.5H11.3232C11.1238 5.22094 10.3411 3.03506 9.0554 1.1513C12.2197 1.63499 14.6796 4.25931 14.9107 7.5ZM10.3191 7.5H5.68036C5.88947 5.29113 6.6912 3.18003 7.99972 1.38985C9.30824 3.18003 10.11 5.29113 10.3191 7.5ZM0.0712891 8C0.0712965 12.3782 3.62001 15.9275 7.99796 15.9286H7.99972H7.99986C12.3787 15.9286 15.9284 12.3788 15.9284 7.99998C15.9284 3.62115 12.3787 0.0714111 7.99986 0.0714111C3.62103 0.0714111 0.0712891 3.62115 0.0712891 7.99998C0.0712891 7.99999 0.0712891 8 0.0712891 8Z" fill="black"></path>
          </svg>
       </span>
-      Get Started<span class="MuiTouchRipple-root css-w0pj6f"></span>
+      <a routerLink="/inference">Get Started</a><span class="MuiTouchRipple-root css-w0pj6f"></span>
    </button>
     <button>test</button>
     <button (click)="authenticator.signOut()", *ngIf="authenticator.route !== 'authenticated'">Logout</button>

@@ -280,22 +280,27 @@
       visibility: hidden;
     }
   }
+
+  .test-background {
+    background-image: url(../assets/shutterstock_2068506785.jpg);
+
+  }
 </style>
 
 <!-- Toolbar -->
 <app-header></app-header>
 
-<div class="content" role="main">
+<div class="content test-background" role="main">
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
 
     <span>{{ title }} app is running!</span>
-    <video width="300" height="300" controls>
+    <!-- <video width="300" height="300" controls>
       <source src="../assets/AgroDetect.mp4" type="video/mp4">
       Your browser does not support the video tag.
-    </video>
+    </video> -->
 
     <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
       <title>Rocket Ship Smoke</title>
@@ -322,6 +327,10 @@
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
+  <video width="500" height="500" controls>
+    <source src="../assets/AgroDetect.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
