@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import { Amplify } from 'aws-amplify';
+import awsmobile from '../aws-exports';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AgroDetectBachelorFrontend';
+  constructor(public authenticator: AuthenticatorService) {
+    Amplify.configure(awsmobile);
+  }
+  title = 'AgroDetectBachelor';
 }
-
-// <h2>{{console.log(user.signInUserSession.idToken)}}</h2>
-// console = console;
