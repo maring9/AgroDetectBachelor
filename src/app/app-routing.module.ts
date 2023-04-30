@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { InferencePageComponent } from './inference-page/inference-page.component';
+import { InferencePageComponent } from './pages/inference-page/inference-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 const routes: Routes = [
   { path: '', redirectTo:'/home', pathMatch: 'full'},
-  { path: 'home', component: AppComponent},
+  { path: 'home', component: HomePageComponent},
   { path: 'inference', component: InferencePageComponent}
 ];
 
