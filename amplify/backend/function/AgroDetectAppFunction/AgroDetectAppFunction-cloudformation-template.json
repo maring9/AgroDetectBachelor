@@ -96,7 +96,11 @@
         },
         "Runtime": "python3.8",
         "Layers": [],
-        "Timeout": 25
+        "Timeout": 120,
+        "TracingConfig": {
+          "Mode": "Active"
+        },
+        "MemorySize": 1024
       }
     },
     "LambdaExecutionRole": {
@@ -191,6 +195,19 @@
               "Effect": "Allow",
               "Action": "dynamodb:GetItem",
               "Resource": "arn:aws:dynamodb:eu-central-1:291860784967:table/DataTable"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+                "xray:GetSamplingRules",
+                "xray:GetSamplingTargets",
+                "xray:GetSamplingStatisticSummaries"
+              ],
+              "Resource": [
+                "*"
+              ]
             }
           ]
         }
