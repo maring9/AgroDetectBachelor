@@ -3,23 +3,13 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
-    "aws_cloud_logic_custom": [
-        {
-            "name": "AgroDetectAppApi",
-            "endpoint": "https://v7m75ji4el.execute-api.eu-central-1.amazonaws.com/dev",
-            "region": "eu-central-1"
-        }
-    ],
     "aws_cognito_identity_pool_id": "eu-central-1:85a0f1e7-6cb2-424f-a1eb-9199687b2bf7",
     "aws_cognito_region": "eu-central-1",
     "aws_user_pools_id": "eu-central-1_5Bk9rHM6h",
     "aws_user_pools_web_client_id": "1hv6csetrj0homv94ljttm7mf5",
     "oauth": {},
     "aws_cognito_username_attributes": [],
-    "aws_cognito_social_providers": [
-        "FACEBOOK",
-        "GOOGLE"
-    ],
+    "aws_cognito_social_providers": [],
     "aws_cognito_signup_attributes": [
         "EMAIL"
     ],
