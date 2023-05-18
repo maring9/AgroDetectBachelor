@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth, API } from 'aws-amplify';
+import { Auth, API, Storage } from 'aws-amplify';
 import { InferenceResponse } from 'src/app/model/inference_response';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Amplify } from 'aws-amplify';
@@ -26,9 +26,8 @@ export class InferencePageComponent {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
 
-    // if (!file) {
-    //   return false;
-    // }
+    this.saveImage(file);
+
     const reader = new FileReader();
     console.log('Encoding image...');
     reader.readAsDataURL(file);
@@ -38,6 +37,16 @@ export class InferencePageComponent {
       console.log(this.b64EncodedImage);
 
     };
+  }
+
+  async saveImage(file: File) {
+    try {
+      const response = await Storage.put(file.name, file, {
+        level: "private"
+      });
+    } catch (error) {
+        console.log("Error uploading file: ", error);
+    }
   }
 
   async runInference() {
