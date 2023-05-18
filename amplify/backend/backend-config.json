@@ -73,5 +73,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "AgroDetectStorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }
