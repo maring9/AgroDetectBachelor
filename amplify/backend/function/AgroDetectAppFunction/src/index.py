@@ -5,10 +5,12 @@ import os
 
 import boto3
 import botocore
+from aws_xray_sdk.core import patch_all, xray_recorder
 
 logger = logging.getLogger()
 logger.setLevel(logging.getLevelName("INFO"))
 
+patch_all()
 
 def handler(event, context):
   logger.info("Handling event: %s", json.dumps(event))
