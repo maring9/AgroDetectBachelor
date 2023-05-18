@@ -1,0 +1,21 @@
+.footer-styling {
+  background-color: #1E2130;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 100%;
+  position: relative;
+}
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}

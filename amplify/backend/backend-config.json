@@ -1,4 +1,20 @@
 {
+  "api": {
+    "AgroDetectAppApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "AgroDetectAppFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "agrodetectapp47ba0d9a": {
       "customAuth": false,
@@ -15,7 +31,10 @@
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "FACEBOOK",
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
@@ -23,6 +42,38 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "AgroDetectAppFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_AgroDetectAppFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AgroDetectAppFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_AgroDetectAppFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AgroDetectAppFunction"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "AgroDetectStorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+    "Name": "Grape Black Rot",
+    "isDisease": "true",
+    "Description": "Grape black rot is a fungal disease that affects grapevines. The disease is caused by the fungus Guignardia bidwellii and can cause significant damage to fruit clusters and leaves if left untreated. The symptoms of grape black rot include small, circular spots on leaves and stems that gradually enlarge and turn brown or black. As the disease progresses, the affected tissue becomes dry and brittle, eventually causing leaves to wither and fall off. Infected fruit clusters will also develop circular, sunken spots that can turn dark and shrivel up. In severe cases, the entire fruit cluster may be destroyed.",
+    "Treatments": [
+        {
+            "Plant resistant varieties": "Choose grape varieties that are resistant to black rot."
+        },
+        {
+            "Practice good sanitation": "Remove and destroy infected plant material, including leaves and fruit clusters, as soon as possible to reduce the amount of fungal inoculum in the vineyard."
+        },
+        {
+            "Use fungicides": "Fungicides can be effective in managing black rot. Applications should begin at the first sign of disease and repeated as necessary."
+        }
+    ],
+    "Products": [
+        {
+            "Dithiocarbamate": "These are contact fungicides that can be used to control grape black rot. Examples include mancozeb and ziram."
+        },
+        {
+            "Strobilurin": "These are systemic fungicides that can be effective in managing grape black rot. Examples include azoxystrobin and pyraclostrobin."
+        },
+        {
+            "Triazole": "These are also systemic fungicides that can be used to control grape black rot. Examples include myclobutanil and tebuconazole."
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<div class="content test-background" role="main">
+
+  <video width="500" height="500" controls>
+    <source src="../assets/AgroDetect.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+
+  <ng-container *ngIf="authenticator.route !== 'authenticated'">
+    <amplify-authenticator>
+      <ng-template
+        amplifySlot="authenticated"
+        let-user="user"
+        let-signOut="signOut"
+      >
+        <h1>Welcome {{ user.username }}!</h1>
+        <button (click)="signOut()">Sign Out</button>
+      </ng-template>
+    </amplify-authenticator>
+  </ng-container>
+
+ <app-footer></app-footer>
+
+</div>
