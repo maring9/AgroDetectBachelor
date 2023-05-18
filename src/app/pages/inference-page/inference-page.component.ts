@@ -27,6 +27,7 @@ export class InferencePageComponent {
     const file: File = event.target.files[0];
 
     this.saveImage(file);
+    console.log("Saved file");
 
     const reader = new FileReader();
     console.log('Encoding image...');
