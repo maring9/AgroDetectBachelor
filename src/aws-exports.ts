@@ -31,7 +31,8 @@ const awsmobile = {
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [
         "FACEBOOK",
-        "GOOGLE"
+        "GOOGLE",
+        "AMAZON"
     ],
     "aws_cognito_signup_attributes": [
         "EMAIL"
@@ -56,37 +57,5 @@ const awsmobile = {
     "aws_user_files_s3_bucket_region": "eu-central-1"
 };
 
-const isLocalhost = Boolean(
-  window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
-);
 
-console.log("Localhost: ", isLocalhost);
-
-const [
-  productionRedirectSignIn,
-  localRedirectSignIn,
-] = awsmobile.oauth.redirectSignIn.split(',');
-
-const [
-  localRedirectSignOut,
-  productionRedirectSignOut,
-] = awsmobile.oauth.redirectSignOut.split(',');
-
-const updatedAwsConfig = {
-  ...awsmobile,
-  oauth: {
-    ...awsmobile.oauth,
-    redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
-    redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
-  }
-}
-
-console.log("Redirect: ", updatedAwsConfig.oauth.redirectSignIn)
-
-export default updatedAwsConfig;
+export default awsmobile;
