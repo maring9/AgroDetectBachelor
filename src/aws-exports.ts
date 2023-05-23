@@ -66,9 +66,11 @@ const isLocalhost = Boolean(
     )
 );
 
+console.log("Localhost: ", isLocalhost);
+
 const [
-  localRedirectSignIn,
   productionRedirectSignIn,
+  localRedirectSignIn,
 ] = awsmobile.oauth.redirectSignIn.split(',');
 
 const [
@@ -84,5 +86,7 @@ const updatedAwsConfig = {
     redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
   }
 }
+
+console.log("Redirect: ", updatedAwsConfig.oauth.redirectSignIn)
 
 export default updatedAwsConfig;
