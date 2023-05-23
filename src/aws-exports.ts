@@ -15,7 +15,7 @@ const awsmobile = {
     "aws_user_pools_id": "eu-central-1_5Bk9rHM6h",
     "aws_user_pools_web_client_id": "1hv6csetrj0homv94ljttm7mf5",
     "oauth": {
-        "domain": "pe2kkri9cfuu-dev.auth.eu-central-1.amazoncognito.com",
+        "domain": "fpglf75egfzd-dev.auth.eu-central-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -23,8 +23,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://dev.d37zldq1fr9xw5.amplifyapp.com/",
-        "redirectSignOut": "https://dev.d37zldq1fr9xw5.amplifyapp.com/",
+        "redirectSignIn": "https://www.agrodetect.net",
+        "redirectSignOut": "https://www.agrodetect.net",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
@@ -51,7 +51,9 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ]
+    ],
+    "aws_user_files_s3_bucket": "agro-detect-storage131939-dev",
+    "aws_user_files_s3_bucket_region": "eu-central-1"
 };
 
 

@@ -61,12 +61,12 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "hostedUI": true,
-    "hostedUIDomainName": "pe2kkri9cfuu",
+    "hostedUIDomainName": "fpglf75egfzd",
     "authProvidersUserPool": [
       "Facebook",
       "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://dev.d37zldq1fr9xw5.amplifyapp.com/\"],\"LogoutURLs\":[\"https://dev.d37zldq1fr9xw5.amplifyapp.com/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.agrodetect.net\"],\"LogoutURLs\":[\"https://www.agrodetect.net\"]}"
   }
 }
