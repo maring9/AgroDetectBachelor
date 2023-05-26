@@ -29,6 +29,11 @@ def handler(event, context):
   if is_not_plant(detected_labels):
     return {
       "statusCode": 200,
+      'headers': {
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+      },
       "body": json.dumps("Uploaded image is not a plant/leaf. Please use a different image.")
     }
 
