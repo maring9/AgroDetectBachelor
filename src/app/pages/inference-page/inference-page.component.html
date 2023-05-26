@@ -1,38 +1,37 @@
 <app-header></app-header>
+<br>
+<br>
+<ng-container *ngIf="authenticator.route !== 'authenticated'">
+  <h1> Please Sign In to run inference</h1>
+  <amplify-authenticator>
+    <ng-template
+      amplifySlot="authenticated"
+      let-user="user"
+      let-signOut="signOut"
+    >
+      <h1>Welcome {{ user.username }}!</h1>
+      <button (click)="signOut()">Sign Out</button>
+    </ng-template>
+  </amplify-authenticator>
+</ng-container>
 
-<div class="content">
-  <ng-container *ngIf="authenticator.route !== 'authenticated' else authenticatedTemplate">
-    <h1> Please Sign In to run inference</h1>
-    <amplify-authenticator>
-      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
-        <h1>Welcome {{ user.username }}!</h1>
-        <button (click)="signOut()">Sign Out</button>
-      </ng-template>
-    </amplify-authenticator>
-  </ng-container>
+<ng-container *ngIf="authenticator.route == 'authenticated'">
+  <p>image-upload works!</p>
+<ng-container *ngIf="isMobileOrTablet == true">
+  <h1>Take image directly</h1>
+  <input type="file" accept="image/*" capture="environment" (change)="onFileSelected">
+  <button (click)="runInference()">Run inference</button>
+</ng-container>
+<br>
+<input type="file" (change)="onFileSelected($event)">
+<br>
+<button (click)="runInference()">Run inference</button>
+<h1> Title: {{inferenceResponse?.name || 'No response yet'}}</h1>
+<h1> Description: {{inferenceResponse?.description || 'No response yet'}}</h1>
+<h1> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h1>
+<h1> Products: {{inferenceResponse?.products || 'No response yet'}} </h1>
+<h1> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h1>
+</ng-container>
 
-  <ng-template #authenticatedTemplate>
-    <div class="form">
-      <div class="input">
-        <ng-container *ngIf="isMobileOrTablet === true">
-          <h1>Take image directly</h1>
-          <input type="file" accept="image/*" capture="environment" (change)="onFileSelected">
-          <button (click)="runInference()">Run inference</button>
-        </ng-container>
-
-        <input type="file" (change)="onFileSelected($event)">
-        <button class="inference-button" (click)="runInference()">Run inference</button>
-      </div>
-
-      <div class="data">
-        <h1> Title: {{inferenceResponse?.name || 'No response yet'}}</h1>
-        <h1> Description: {{inferenceResponse?.description || 'No response yet'}}</h1>
-        <h1> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h1>
-        <h1> Products: {{inferenceResponse?.products || 'No response yet'}} </h1>
-        <h1> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h1>
-      </div>
-    </div>
-  </ng-template>
-</div>
 
 <app-footer></app-footer>

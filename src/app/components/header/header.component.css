@@ -6,23 +6,10 @@
   right: 0;
   height: 60px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #1E2130;
   color: white;
   font-weight: 600;
-  padding-right: 6px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-a {
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 .toolbar img {
@@ -91,8 +78,7 @@ button {
   text-transform: none;
   text-indent: 0px;
   text-shadow: none;
-  display: flex;
-  justify-content: space-between;
+  display: inline-block;
   text-align: center;
   align-items: flex-start;
   cursor: default;
@@ -106,10 +92,3 @@ button {
   border-image: initial;
 }
 
-.globe {
-  margin-right: 6px;
-}
-
-.getStarted {
-  color: black;
-}
