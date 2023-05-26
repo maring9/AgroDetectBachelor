@@ -5,17 +5,27 @@
   border: none;
   width: auto;
   min-width: 100%;
+  height: 66px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
-  margin-top: 8px;
   display: flex;
   align-items: center;
   line-height: 20px;
 }
 
 footer a {
+  color: white;
   display: flex;
   align-items: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
