@@ -56,6 +56,8 @@ const awsmobile = {
     "aws_user_files_s3_bucket": "agro-detect-storage131939-dev",
     "aws_user_files_s3_bucket_region": "eu-central-1"
 };
+
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
