@@ -1,0 +1,30 @@
+{
+    "Name": "Corn Cerscopora Gray Leaf Spot",
+    "isDisease": "true",
+    "Description": "Cercospora leaf spot, also known as gray leaf spot, is a fungal disease that affects corn plants. It is caused by the fungus Cercospora zeae-maydis and can cause significant yield losses if not managed properly. The symptoms of gray leaf spot begin as small, circular or oval, grayish lesions on the leaves, which can enlarge and merge together as the disease progresses. The lesions may have a yellow halo around them, and the leaves can eventually turn brown and die. The disease can also affect the husks and stalks of the plant.",
+    "Treatments": [
+        {
+            "Plant resistant varieties": "Choose corn varieties that are resistant to gray leaf spot."
+        },
+        {
+            "Rotate crops": "Avoid planting corn in the same field year after year, as the fungus can survive in crop residue."
+        },
+        {
+            "Practice good sanitation": "Remove and destroy crop residue after harvest to reduce the amount of fungal inoculum in the field."
+        },
+        {
+            "Use fungicides": "Fungicides can be effective in managing gray leaf spot. Applications should begin when the first symptoms are detected, and repeated as necessary."
+        }
+    ],
+    "Products": [
+        {
+            "Azoxystrobin": "A systemic fungicide that is effective against cercospora leaf spot and other fungal diseases in corn."
+        },
+        {
+            "Pyraclostrobin": "A systemic fungicide that can be used to control cercospora leaf spot on corn."
+        },
+        {
+            "Chlorothalonil": "A contact fungicide that is effective against many fungal diseases, including cercospora leaf spot."
+        }
+    ]
+}

@@ -3,11 +3,31 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
+    "aws_cloud_logic_custom": [
+        {
+            "name": "AgroDetectAppApi",
+            "endpoint": "https://v7m75ji4el.execute-api.eu-central-1.amazonaws.com/dev",
+            "region": "eu-central-1"
+        }
+    ],
     "aws_cognito_identity_pool_id": "eu-central-1:85a0f1e7-6cb2-424f-a1eb-9199687b2bf7",
     "aws_cognito_region": "eu-central-1",
     "aws_user_pools_id": "eu-central-1_5Bk9rHM6h",
     "aws_user_pools_web_client_id": "1hv6csetrj0homv94ljttm7mf5",
-    "oauth": {},
+    "oauth": {
+        "domain": "fpglf75egfzd-dev.auth.eu-central-1.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "https://www.agrodetect.net,http://localhost:4200/",
+        "redirectSignOut": "https://www.agrodetect.net,http://localhost:4200/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
     "aws_cognito_signup_attributes": [
@@ -23,8 +43,42 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ]
+    ],
+    "aws_user_files_s3_bucket": "agro-detect-storage131939-dev",
+    "aws_user_files_s3_bucket_region": "eu-central-1"
 };
 
+const isLocalhost = Boolean(
+  window.location.hostname === 'localhost' ||
+    // [::1] is the IPv6 localhost address.
+    window.location.hostname === '[::1]' ||
+    // 127.0.0.1/8 is considered localhost for IPv4.
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
+);
 
-export default awsmobile;
+console.log("Localhost: ", isLocalhost);
+
+const [
+  productionRedirectSignIn,
+  localRedirectSignIn,
+] = awsmobile.oauth.redirectSignIn.split(',');
+
+const [
+  localRedirectSignOut,
+  productionRedirectSignOut,
+] = awsmobile.oauth.redirectSignOut.split(',');
+
+const updatedAwsConfig = {
+  ...awsmobile,
+  oauth: {
+    ...awsmobile.oauth,
+    redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
+    redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
+  }
+}
+
+console.log("Redirect: ", updatedAwsConfig.oauth.redirectSignIn)
+
+export default updatedAwsConfig;

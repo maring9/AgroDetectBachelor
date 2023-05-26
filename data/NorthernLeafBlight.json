@@ -1,0 +1,30 @@
+{
+    "Name": "Corn Northern Leaf Blight",
+    "isDisease": "true",
+    "Description": "Northern leaf blight is a fungal disease that affects corn plants. It is caused by the fungus Setosphaeria turcica and can cause significant yield losses if not managed properly. The symptoms of northern leaf blight include long, elliptical lesions on the leaves that are gray-green in color with irregular edges. As the disease progresses, the lesions can become larger and more numerous, eventually causing significant damage to the leaves and reducing photosynthesis. In severe cases, the disease can also affect the ears and kernels of the corn.",
+    "Treatments": [
+        {
+            "Plant resistant varieties": "Choose corn varieties that are resistant to northern leaf blight."
+        },
+        {
+            "Rotate crops": "Avoid planting corn in the same field year after year, as the fungus can survive in crop residue."
+        },
+        {
+            "Practice good sanitation": "Remove and destroy crop residue after harvest to reduce the amount of fungal inoculum in the field."
+        },
+        {
+            "Use fungicides": "Fungicides can be effective in managing common rust. Applications should begin when the first symptoms are detected, and repeated as necessary according to label instructions."
+        }
+    ],
+    "Products": [
+        {
+            "Triazole": "These are systemic fungicides that are effective against northern leaf blight and other fungal diseases in corn. Examples include propiconazole, tebuconazole, and triadimefon."
+        },
+        {
+            "Strobilurin": "These are also systemic fungicides that can be used to control northern leaf blight in corn. Examples include azoxystrobin and pyraclostrobin."
+        },
+        {
+            "Chlorothalonil": "A contact fungicide that is effective against many fungal diseases, including northern leaf blight."
+        }
+    ]
+}
