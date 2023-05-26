@@ -18,7 +18,7 @@
       "function": {
         "AgroDetectAppFunction": {
           "deploymentBucketName": "amplify-agrodetectapp-dev-131939-deployment",
-          "s3Key": "amplify-builds/AgroDetectAppFunction-73632b51793962725730-build.zip"
+          "s3Key": "amplify-builds/AgroDetectAppFunction-7a38596e625632523579-build.zip"
         }
       },
       "api": {
