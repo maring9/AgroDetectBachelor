@@ -24,15 +24,14 @@ p {
   flex: 1;
 }
 
-
-
 .content {
   display: flex;
   margin: 82px auto 32px;
   padding: 0 16px;
   max-width: 1500px;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(100vh - 180px);
 }
 
 svg.material-icons {
@@ -126,7 +125,6 @@ svg#rocket {
 }
 
 svg#rocket-smoke {
-  height: calc(100vh - 95px);
   position: absolute;
   top: 10px;
   right: 180px;
@@ -242,6 +240,9 @@ svg#clouds {
   width: 1920px;
 }
 
+video {
+  max-width: 600px;
+}
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
   .card-container > *:not(.circle-link) ,
