@@ -27,10 +27,7 @@ def handler(event, context):
 
   # Checks if the input image is a plant
   if is_not_plant(detected_labels):
-    return {
-      "statusCode": 200,
-      "body": json.dumps("Uploaded image is not a plant/leaf. Please use a different image.")
-    }
+    return_sanity_check_response()
 
   # Runs inference on the input image
   sagemaker_response = run_inference(image_bytes, SAGEMAKER_ENDPOINT_NAME)
