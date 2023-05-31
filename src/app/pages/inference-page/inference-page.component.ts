@@ -14,6 +14,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 export class InferencePageComponent {
   isMobileOrTablet: boolean = false;
+  url: any; //Angular 11, for stricter type
+	msg = "";
 
   constructor(public authenticator: AuthenticatorService, private deviceService: DeviceDetectorService) {
     Amplify.configure(awsmobile);
@@ -36,8 +38,27 @@ export class InferencePageComponent {
     reader.onload = () => {
       this.b64EncodedImage= reader.result?.toString().split(',')[1];
       console.log(this.b64EncodedImage);
-
     };
+
+    if(!event.target.files[0] || event.target.files[0].length == 0) {
+			this.msg = 'You must select an image';
+			return;
+		}
+		
+		var mimeType = event.target.files[0].type;
+		
+		if (mimeType.match(/image\/*/) == null) {
+			this.msg = "Only images are supported";
+			return;
+		}
+		
+    var fileReader = new FileReader();
+		fileReader.readAsDataURL(event.target.files[0]);
+		
+		fileReader.onload = (_event) => {
+			this.msg = "";
+			this.url = fileReader.result; 
+		}
   }
 
   async saveImage(file: File) {
@@ -53,7 +74,6 @@ export class InferencePageComponent {
   async runInference() {
     console.log('Running inference');
     const user = await Auth.currentAuthenticatedUser();
-
     const jwtToken = user.signInUserSession.idToken.jwtToken;
     console.log(jwtToken);
 
@@ -74,6 +94,10 @@ export class InferencePageComponent {
     } catch (error) {
       console.log("Error running inference: ", error)
     }
-
   }
+	
+	//selectFile(event) { //Angular 8
+	selectFile(event: any) { //Angular 11, for stricter type
+		
+	}
 }

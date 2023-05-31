@@ -1,38 +1,57 @@
-<app-header></app-header>
+<div style="background-image: url('./../../assets/background.jpg'); background-size: auto 100%;">
+  <div>
+    <app-header></app-header>
+  </div>
 
-<div class="content">
-  <ng-container *ngIf="authenticator.route !== 'authenticated' else authenticatedTemplate">
-    <h1> Please Sign In to run inference</h1>
-    <amplify-authenticator>
-      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
-        <h1>Welcome {{ user.username }}!</h1>
-        <button (click)="signOut()">Sign Out</button>
-      </ng-template>
-    </amplify-authenticator>
-  </ng-container>
-
-  <ng-template #authenticatedTemplate>
-    <div class="form">
-      <div class="input">
-        <ng-container *ngIf="isMobileOrTablet === true">
-          <h1>Take image directly</h1>
-          <input type="file" accept="image/*" capture="environment" (change)="onFileSelected">
-          <button (click)="runInference()">Run inference</button>
-        </ng-container>
-
-        <input type="file" (change)="onFileSelected($event)">
-        <button class="inference-button" (click)="runInference()">Run inference</button>
+  <div class="mb-3" style="height: 100vh;">
+    <ng-container *ngIf="authenticator.route !== 'authenticated' else authenticatedTemplate">
+      <div class="container w-50 text-center mt-3 alert alert-danger" role="alert">
+        Please Sign In to run inference
       </div>
+      <amplify-authenticator>
+        <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+          <h1>Welcome {{ user.username }}!</h1>
+          <button (click)="signOut()">Sign Out</button>
+        </ng-template>
+      </amplify-authenticator>
+    </ng-container>
 
-      <div class="data">
-        <h1> Title: {{inferenceResponse?.name || 'No response yet'}}</h1>
-        <h1> Description: {{inferenceResponse?.description || 'No response yet'}}</h1>
-        <h1> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h1>
-        <h1> Products: {{inferenceResponse?.products || 'No response yet'}} </h1>
-        <h1> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h1>
+    <ng-template #authenticatedTemplate>
+      <div class="row align-items-center m-auto container mt-4">
+        <div class="col-md-5">
+          <div class="form">
+            <div class="text-center">
+              <ng-container *ngIf="isMobileOrTablet === true">
+                <h1>Take image directly</h1>
+                <input type="file" accept="image/*" capture="environment" (change)="onFileSelected">
+                <button (click)="runInference()">Run inference</button>
+              </ng-container>
+
+              <div class="text-center">
+                <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+                <div><img [src]="url" class="img-thumbnail" *ngIf="url"></div>
+                <input class="form-control w-50 mt-3 m-auto" type="file" (change)="onFileSelected($event)">
+              </div>
+              <button class="btn btn-success text-center m-auto mt-3 px-5" (click)="runInference()">Run inference</button>
+            </div> 
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="card opacity-75">
+            <div class="card-body">
+              <h5> Title: {{inferenceResponse?.name || 'No response yet'}}</h5>
+              <h5> Description: {{inferenceResponse?.description || 'No response yet'}}</h5>
+              <h5> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h5>
+              <h5> Products: {{inferenceResponse?.products || 'No response yet'}} </h5>
+              <h5> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h5>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
+
+  <div>
+    <app-footer></app-footer>
+  </div>
 </div>
-
-<app-footer></app-footer>
