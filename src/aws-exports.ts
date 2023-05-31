@@ -76,8 +76,8 @@ const [
 ] = awsmobile.oauth.redirectSignIn.split(',');
 
 const [
-  localRedirectSignOut,
   productionRedirectSignOut,
+  localRedirectSignOut
 ] = awsmobile.oauth.redirectSignOut.split(',');
 
 const updatedAwsConfig = {
