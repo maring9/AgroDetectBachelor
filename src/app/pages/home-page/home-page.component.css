@@ -1,4 +1,7 @@
-:host {
+.opacity-75 {
+  opacity: 0.85 !important;
+}
+/* :host {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   color: #333;
@@ -244,7 +247,7 @@ video {
   max-width: 600px;
 }
 /* Responsive Styles */
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .card-container > *:not(.circle-link) ,
   .terminal {
     width: 100%;
@@ -270,4 +273,4 @@ video {
     display: none;
     visibility: hidden;
   }
-}
+}  */

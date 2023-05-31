@@ -1,28 +1,145 @@
-<app-header></app-header>
+<div style="background-image: url('./../../assets/background.jpg'); background-size: auto 100%;">
+  <div>
+    <app-header></app-header>
+  </div>
 
-<div class="content test-background" role="main">
-  <video controls>
-    <source src="../assets/AgroDetect.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-
-  <ng-container *ngIf="authenticator.route !== 'authenticated'">
-    <amplify-authenticator>
-      <ng-template amplifySlot="header">
-        <div style="padding: var(--amplify-space-large); text-align: center">
-          <img
-            alt="Logo"
-            src="../../../assets/logo_only.png"
-          />
+  <div class="mb-3">
+    <div class="row mt-2">
+      <div class="col-md-10 m-auto">
+        <div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p style="color: white;">Revolutionizing Plant Disease Identification with Cutting-Edge AI Technology</p>
+              <footer class="blockquote-footer" style="color: #d5d8da;"><cite title="Source Title">AgroDetect</cite>
+              </footer>
+            </blockquote>
+          </div>
         </div>
-      </ng-template>
-      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
-        <h1>Welcome {{ user.username }}!</h1>
-        <button (click)="signOut()">Sign Out</button>
-      </ng-template>
-    </amplify-authenticator>
-  </ng-container>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-around align-items-center flex-wrap">
+      <video width="640" height="480" controls>
+        <source src="../assets/AgroDetect.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <ng-container *ngIf="authenticator.route !== 'authenticated'">
+        <amplify-authenticator>
+          <ng-template amplifySlot="header">
+            <div style="padding: var(--amplify-space-large); text-align: center">
+            </div>
+          </ng-template>
+          <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+            <h1>Welcome {{ user.username }}!</h1>
+            <button (click)="signOut()">Sign Out</button>
+          </ng-template>
+        </amplify-authenticator>
+      </ng-container>
+    </div>
+
+    <div class="container m-auto row mt-5">
+      <div class="col-md-6 mb-3">
+        <div class="card h-100 opacity-75">
+          <div class="card-header">
+            Early Detection, Better Protection
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              Are your crops suffering from mysterious diseases? Don't leave it to chance. 
+            </div>
+            <div class="card-text">
+              AgroDetect is here to transform the way you safeguard your plants.
+            </div>
+            <div class="card-text">
+              Harnessing the power of AI and computer vision, we bring you the most advanced plant disease identification technology available today.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="card h-100 opacity-75">
+          <div class="card-header">
+            Unmatched Accuracy, Reliable Diagnosis
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              With AgroDetect, you can trust in the precision of our AI algorithms.
+            </div>
+            <div class="card-text">
+              Our state-of-the-art system analyzes images of plant leaves with unparalleled accuracy, providing you with reliable diagnoses of diseases in an
+              instant.
+            </div>
+            <div class="card-text">
+              Say goodbye to uncertain results and welcome a new era of plant health management.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="card h-100 opacity-75">
+          <div class="card-header">
+            Early Detection, Greater Yield
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              Detecting diseases at their earliest stages is the key to protecting your crops and maximizing yield.
+            </div>
+            <div class="card-text">
+              AgroDetect's cutting-edge technology identifies subtle signs of diseases that may go unnoticed by the human eye.
+            </div>
+            <div class="card-text">              
+               By catching these issues early on, you can implement targeted interventions and safeguard your harvest for a bountiful yield.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="card h-100 opacity-75">
+          <div class="card-header">
+            The AgroDetect Advantage
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              Cutting-Edge Technology: We leverage the latest advancements in AI and computer vision to deliver a
+              superior plant disease identification solution.
+            </div>
+            <div class="card-text">
+              Accurate Diagnosis: Our algorithms provide precise disease identification, empowering you to take the
+              right action at the right time.
+            </div>
+            <div class="card-text">
+              Early Detection: Stay one step ahead by detecting diseases before they spread, minimizing the risk of crop
+              loss.
+            </div>
+            <div class="card-text">
+              Increased Yield: With AgroDetect's timely intervention, you can optimize your plant health management
+              practices and boost your overall yield.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 mb-3 m-auto">
+        <div class="card h-100 opacity-75">
+          <div class="card-header">
+            Join the AgroDetect Community
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Don't settle for outdated methods. Embrace the future of plant disease identification with AgroDetect. We
+              are here to support farmers, gardeners, and agricultural professionals in protecting their plants and
+              ensuring a prosperous harvest.
+              Unlock the potential of early detection. Experience the AgroDetect advantage today!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-footer></app-footer>
+  </div>
 </div>
 
-<app-footer></app-footer>
+<div class="content test-background" role="main">
+</div>
