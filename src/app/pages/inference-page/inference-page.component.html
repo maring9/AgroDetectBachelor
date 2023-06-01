@@ -33,21 +33,47 @@
                 <input class="form-control w-50 mt-3 m-auto" type="file" (change)="onFileSelected($event)">
               </div>
               <button class="btn btn-success text-center m-auto mt-3 px-5" (click)="runInference()">Run inference</button>
-            </div> 
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="card opacity-75">
-            <div class="card-body">
-              <h5> Title: {{inferenceResponse?.name || 'No response yet'}}</h5>
-              <h5> Description: {{inferenceResponse?.description || 'No response yet'}}</h5>
-              <h5> Is Disease: {{inferenceResponse?.isDisease || 'No response yet'}}</h5>
-              <h5> Products: {{inferenceResponse?.products || 'No response yet'}} </h5>
-              <h5> Treatments: {{inferenceResponse?.treatments || 'No response yet'}}</h5>
             </div>
           </div>
         </div>
-      </div>
+        <div *ngIf="isFinished">
+          <div class="col-md-7" *ngIf="isNotPlant">
+            <div class="card opacity-75">
+              <div class="card-body">
+                <h5> Uploaded image is not a plant. Please upload a different image.</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7" *ngIf="isNotPlant === false">
+            <div class="card opacity-75">
+              <div class="card-body">
+                <h5>{{inferenceResponse?.name || ''}}</h5>
+                <h5>{{inferenceResponse?.description || ''}}</h5>
+                <h6 *ngIf="inferenceResponse?.treatments?.length !== 0">
+                  Recommended Treatments:
+                  <div *ngFor="let treatment of inferenceResponse?.treatments">
+                    <ul>
+                      <div *ngFor="let item of treatment | keyvalue">
+                        <li>{{item.key}} - {{item.value}}</li>
+                      </div>
+                    </ul>
+                  </div>
+                </h6>
+                <h6 *ngIf="inferenceResponse?.treatments?.length !== 0">
+                  Recommended Products
+                  <div *ngFor="let product of inferenceResponse?.products">
+                    <ul>
+                      <div *ngFor="let item of product | keyvalue">
+                        <li>{{item.key}} - {{item.value}}</li>
+                      </div>
+                    </ul>
+                  </div>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
     </ng-template>
   </div>
 

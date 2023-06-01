@@ -9,7 +9,7 @@ export class InferenceResponse {
       this.name = Name;
       this.description = Description;
       this.isDisease = isDisease;
-      this.products = Products;
-      this.treatments = Treatments;
+      this.products = Treatments;
+      this.treatments = Products;
     }
 }
