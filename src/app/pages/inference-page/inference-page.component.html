@@ -21,12 +21,6 @@
         <div class="col-md-5">
           <div class="form">
             <div class="text-center">
-              <ng-container *ngIf="isMobileOrTablet === true">
-                <h1>Take image directly</h1>
-                <input type="file" accept="image/*" capture="environment" (change)="onFileSelected">
-                <button (click)="runInference()">Run inference</button>
-              </ng-container>
-
               <div class="text-center">
                 <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
                 <div><img [src]="url" class="img-thumbnail" *ngIf="url"></div>
