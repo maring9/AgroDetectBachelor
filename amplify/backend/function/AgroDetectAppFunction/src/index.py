@@ -157,7 +157,7 @@ def run_inference(image_bytes, ENDPOINT_NAME):
     return sagemaker_response
 
   except botocore.exceptions.ClientError as error:
-      logger.error("Error during SageMaker call: ", error)
+      logger.error("Error during SageMaker call: %s", error)
 
 
 def parse_inference_response(sagemaker_response):
