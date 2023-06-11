@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = C:\Users\marin\Desktop\AgroDetectBachelorFrontend\amplify\backend\function\AgroDetectAppFunction\src
+
+[html]
+directory = C:\Users\marin\Desktop\AgroDetectBachelorFrontend\amplify\backend\function\AgroDetectAppFunction\src\tests\coverage_report
