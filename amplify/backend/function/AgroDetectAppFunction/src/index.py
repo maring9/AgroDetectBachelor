@@ -2,7 +2,7 @@ import base64
 import json
 import logging
 import os
-
+from typing import List
 import boto3
 import botocore
 from aws_xray_sdk.core import patch_all
@@ -18,16 +18,28 @@ def handler(event, context):
 
     # Env vars
     # pylint: disable=C0103
-    TABLE_NAME = os.environ["DYNAMODB_TABLE_NAME"]
+    TABLE_NAME: str = os.environ["DYNAMODB_TABLE_NAME"]
 
     # pylint: disable=C0103
-    SAGEMAKER_ENDPOINT_NAME = os.environ["SAGEMAKER_INFERENCE_ENDPOINT"]
+    SAGEMAKER_ENDPOINT_NAME: str = os.environ["SAGEMAKER_INFERENCE_ENDPOINT"]
 
     # Gets the inference image as bytes
     image_bytes = get_image_bytes(event)
 
-    # Sanity checks the input image
-    detected_labels = detect_labels(image_bytes)
+    try:
+        # Sanity checks the input image
+        detected_labels = detect_labels(image_bytes)
+    except botocore.exceptions.ClientError as error:
+        logger.warning("Error during Rekognition call: %s", error)
+        return {
+            "statusCode": 502,
+            "headers": {
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            },
+        "body": json.dumps("Request could not be processed")
+        }
 
     # Checks if the input image is a plant
     if is_not_plant(detected_labels):
@@ -41,14 +53,38 @@ def handler(event, context):
         "body": json.dumps("Uploaded image is not a plant/leaf. Please use a different image.")
         }
 
-    # Runs inference on the input image
-    sagemaker_response = run_inference(image_bytes, SAGEMAKER_ENDPOINT_NAME)
+    try:
+        # Runs inference on the input image
+        sagemaker_response = run_inference(image_bytes, SAGEMAKER_ENDPOINT_NAME)
+    except botocore.exceptions.ClientError as error:
+        logger.warning("Error during SageMaker call: %s", error)
+        return {
+            "statusCode": 502,
+            "headers": {
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            },
+        "body": json.dumps("Request could not be processed")
+        }
 
     # Parses the response from SageMaker
     label = parse_inference_response(sagemaker_response)
 
-    # Gets API response object from DynamoDB
-    dynamodb_item = get_dynamodb_response_object(label, TABLE_NAME)
+    try:
+        # Gets API response object from DynamoDB
+        dynamodb_item = get_dynamodb_response_object(label, TABLE_NAME)
+    except botocore.exceptions.ClientError as error:
+        logger.warning("Error during DynamoDB call: %s", error)
+        return {
+            "statusCode": 502,
+            "headers": {
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            },
+        "body": json.dumps("Request could not be processed")
+        }
 
     # Parses the response from DynamoDB
     api_response = parse_dynamodb_response(dynamodb_item)
@@ -64,7 +100,7 @@ def handler(event, context):
     }
 
 
-def get_image_bytes(event):
+def get_image_bytes(event: dict) -> bytes:
     """ Function to get the image from the event payload.
 
     Args:
@@ -74,14 +110,14 @@ def get_image_bytes(event):
         bytes: Image bytes.
     """
 
-    event_body = event["body"].encode("utf-8")
+    event_body: str = event["body"].encode("utf-8")
 
-    image_bytes = base64.b64decode(event_body)
+    image_bytes: bytes = base64.b64decode(event_body)
 
     return image_bytes
 
 
-def detect_labels(image_bytes):
+def detect_labels(image_bytes: bytes) -> List[str]:
     """ Use AWS Rekognition to sanity check the input image.
 
     Args:
@@ -91,27 +127,23 @@ def detect_labels(image_bytes):
         list: List of detected labels for the input image.
     """
 
-    rekognition_client = boto3.client("rekognition")
+    rekognition_client: boto3.client = boto3.client("rekognition")
 
-    try:
-        rekognition_response = rekognition_client.detect_labels(
-        Image={
-            "Bytes": image_bytes
-        },
-        MaxLabels = 10
-        )
-    except botocore.exceptions.ClientError as error:
-        logger.error("Error during Rekognition call: %s", error)
+    rekognition_response: dict = rekognition_client.detect_labels(
+    Image={
+        "Bytes": image_bytes
+    },
+    MaxLabels = 10)
 
-    detected_labels = rekognition_response["Labels"]
+    detected_labels: List[dict] = rekognition_response["Labels"]
 
-    detected_labels = [label["Name"] for label in detected_labels]
+    detected_labels_list: List[str] = [label["Name"] for label in detected_labels]
     logger.info("Detected labels by Rekognition: %s", detected_labels)
 
-    return detected_labels
+    return detected_labels_list
 
 
-def is_not_plant(detected_labels):
+def is_not_plant(detected_labels: List) -> bool:
     """ Function to check if the input image is of a plant.
 
     Args:
@@ -124,7 +156,7 @@ def is_not_plant(detected_labels):
     return "Leaf" not in detected_labels and "Plant" not in detected_labels
 
 
-def return_sanity_check_response():
+def return_sanity_check_response() -> dict:
     """ Response in case the sanity check fails.
 
     Returns:
@@ -138,7 +170,7 @@ def return_sanity_check_response():
 
 
 # pylint: disable=C0103
-def run_inference(image_bytes, ENDPOINT_NAME):
+def run_inference(image_bytes: bytes, ENDPOINT_NAME: str) -> dict:
     """ Function to run inference on the input image.
 
     Args:
@@ -149,23 +181,19 @@ def run_inference(image_bytes, ENDPOINT_NAME):
         dict: Response from the SageMaker Endpoint.
     """
 
-    sagemaker_runtime_client = boto3.client("sagemaker-runtime")
+    sagemaker_runtime_client: boto3.client = boto3.client("sagemaker-runtime")
 
-    try:
-        sagemaker_response = sagemaker_runtime_client.invoke_endpoint(
-        EndpointName=ENDPOINT_NAME,
-        Body=image_bytes,
-        ContentType="application/x-image"
-        )
-        logger.info("Sagemaker response: %s", sagemaker_response)
+    sagemaker_response: dict = sagemaker_runtime_client.invoke_endpoint(
+    EndpointName=ENDPOINT_NAME,
+    Body=image_bytes,
+    ContentType="application/x-image"
+    )
+    logger.info("Sagemaker response: %s", sagemaker_response)
 
-        return sagemaker_response
-
-    except botocore.exceptions.ClientError as error:
-        logger.error("Error during SageMaker call: %s", error)
+    return sagemaker_response
 
 
-def parse_inference_response(sagemaker_response):
+def parse_inference_response(sagemaker_response: dict) -> str:
     """ Function to parse the response from SageMaker.
 
     Args:
@@ -175,16 +203,16 @@ def parse_inference_response(sagemaker_response):
         str: Detected label.
     """
 
-    label = sagemaker_response["Body"].read()
+    label: bytes = sagemaker_response["Body"].read()
 
-    label = label.decode("utf-8")
+    label_: str = label.decode("utf-8")
     logger.info("Detected label from SageMaker: %s", label)
 
-    return label
+    return label_
 
 
 # pylint: disable=C0103
-def get_dynamodb_response_object(label, TABLE_NAME):
+def get_dynamodb_response_object(label: str, TABLE_NAME: str) ->dict:
     """ Function to get the API response object from DynamoDB.
 
     Args:
@@ -195,22 +223,18 @@ def get_dynamodb_response_object(label, TABLE_NAME):
         dict: Response from DynamoDB.
     """
 
-    dynamodb_client = boto3.client("dynamodb")
+    dynamodb_client: boto3.client = boto3.client("dynamodb")
 
-    try:
-        dynamodb_response = dynamodb_client.get_item(TableName=TABLE_NAME, Key={"Name": {"S": label}})
-        logger.info("DynamoDB response: %s", dynamodb_response)
+    dynamodb_response: dict = dynamodb_client.get_item(TableName=TABLE_NAME, Key={"Name": {"S": label}})
+    logger.info("DynamoDB response: %s", dynamodb_response)
 
-    except botocore.exceptions.ClientError as error:
-        logger.error("Error during DynamoDB call: %s", error)
-
-    dynamodb_item = dynamodb_response["Item"]
+    dynamodb_item: dict = dynamodb_response["Item"]
     logger.info("DynamoDb response item: %s", dynamodb_item)
 
     return dynamodb_item
 
 
-def parse_dynamodb_response(response):
+def parse_dynamodb_response(response: dict) -> dict:
     """ Helper function to deserialize the DynamoDB response to standard json object.
 
     Args:
@@ -220,7 +244,7 @@ def parse_dynamodb_response(response):
         dict: API response object.
     """
 
-    api_response = {}
+    api_response: dict = {}
 
     api_response["Name"] = list(response["Name"].values())[0]
     api_response["Description"] = list(response["Description"].values())[0]
@@ -231,7 +255,7 @@ def parse_dynamodb_response(response):
 
     return api_response
 
-def beautify(data):
+def beautify(data: dict) -> List[dict]:
     """ Helper function to deserialize part of the DynamoDB item.
 
     Args:
@@ -241,7 +265,7 @@ def beautify(data):
         list: Standard object.
     """
 
-    response = []
+    response: List = []
 
     for item in data["L"]:
         data_dict = {}
