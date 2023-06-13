@@ -239,3 +239,90 @@ class TestBotoFunctions(unittest.TestCase):
 
         handler(EVENT, None)
 
+    @mock.patch("boto3.client", client_stub)
+    @mock.patch.dict(os.environ, ENV_VARS)
+    def test_handler_successful_not_plant(self):
+        self.setup_class()
+        rekognition_client_stubber.add_response(
+        method="detect_labels",
+        service_response=REKOGNITION["NOT_PLANT_RESPONSE"],
+        expected_params=REKOGNITION["EXPECTED_PARAMS"])
+
+        handler(EVENT, None)
+
+    @mock.patch("boto3.client", client_stub)
+    @mock.patch.dict(os.environ, ENV_VARS)
+    def test_handler_rekognition_error(self):
+        self.setup_class()
+
+        rekognition_client_stubber.add_client_error(
+        method="detect_labels",
+        service_error_code="TestError",
+        )
+
+        handler(EVENT, None)
+
+    @mock.patch("boto3.client", client_stub)
+    @mock.patch.dict(os.environ, ENV_VARS)
+    def test_handler_sagemaker_error(self):
+        self.setup_class()
+
+        rekognition_client_stubber.add_response(
+        method="detect_labels",
+        service_response=REKOGNITION["RESPONSE"],
+        expected_params=REKOGNITION["EXPECTED_PARAMS"])
+
+        sagemaker_client_stubber.add_client_error(
+        method="invoke_endpoint",
+        service_error_code="TestError")
+
+        handler(EVENT, None)
+
+
+rekognition_client2 = boto3.client("rekognition", region_name="eu-central-1")
+rekognition_client_stubber2 = Stubber(rekognition_client)
+
+sagemaker_client2 = boto3.client("sagemaker-runtime", region_name="eu-central-1")
+sagemaker_client_stubber2 = Stubber(sagemaker_client)
+
+dynamodb_client2 = boto3.client("dynamodb", region_name="eu-central-1")
+dynamodb_client_stubber2 = Stubber(dynamodb_client)
+
+CLIENT_STUB_DICT2 = {
+    "rekognition": rekognition_client_stubber2.client,
+    "sagemaker-runtime": sagemaker_client_stubber2.client,
+    "dynamodb": dynamodb_client_stubber2.client
+}
+
+# pylint: disable=W0613
+def client_stubs2(service_name, **kwargs):
+    return CLIENT_STUB_DICT2[service_name]
+class DynamoDBError:
+    def setup_class(self):
+        rekognition_client_stubber2.activate()
+        sagemaker_client_stubber2.activate()
+        dynamodb_client_stubber2.activate()
+
+    def teardown_class(self):
+        rekognition_client_stubber2.deactivate()
+        sagemaker_client_stubber2.deactivate()
+        dynamodb_client_stubber2.deactivate()
+
+    @mock.patch("boto3.client", client_stubs2)
+    @mock.patch.dict(os.environ, ENV_VARS)
+    def test_handler_dynamodb_error(self):
+        rekognition_client_stubber2.add_response(
+        method="detect_labels",
+        service_response=REKOGNITION["RESPONSE"],
+        expected_params=REKOGNITION["EXPECTED_PARAMS"])
+
+        sagemaker_client_stubber2.add_response(
+        method="invoke_endpoint",
+        service_response=SAGEMAKER["RESPONSE"],
+        expected_params=SAGEMAKER["EXPECTED_PARAMS"])
+
+        dynamodb_client_stubber2.add_client_error(
+        method="get_item",
+        service_error_code="TestError")
+
+        handler(EVENT, None)
