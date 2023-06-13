@@ -64,3 +64,5 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 env
+
+.coverage

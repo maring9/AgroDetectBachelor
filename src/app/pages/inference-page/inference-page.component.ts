@@ -77,6 +77,7 @@ export class InferencePageComponent {
     const user = await Auth.currentAuthenticatedUser();
     const jwtToken = user.signInUserSession.idToken.jwtToken;
 
+    // TODO - Resize image to (150, 150) before sending as payload
     const requestData = {
       body: this.b64EncodedImage,
       headers : {
